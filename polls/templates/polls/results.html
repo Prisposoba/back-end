@@ -1,0 +1,9 @@
+<h1>{{ invention.invention_name }}</h1>
+
+<ul>
+{% for proposal in invention.proposal_set.all %}
+    <li>{{ proposal.proposed_sum }} -- {{ proposal.votes }} vote{{ proposal.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' invention.id %}">Vote again?</a>

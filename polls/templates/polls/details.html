@@ -1,0 +1,12 @@
+<h1>{{ invention.invention_name}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' invention.id %}" method="post">
+    {% csrf_token %}
+    {% for proposal in invention.proposal_set.all %}
+        <input type="radio" name="proposal" id="proposal{{ forloop.counter }}" value="{{ proposal.id }}">
+        <label for="proposal{{ forloop.counter }}">{{ proposal.proposed_sum }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+</form>

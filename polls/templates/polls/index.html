@@ -1,0 +1,9 @@
+{% if latest_invention_list %}
+    <ul>
+    {% for invention in latest_invention_list %}
+        <li><a href="{% url 'polls:detail' invention.id %}">{{ invention.invention_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No inventions are available.</p>
+{% endif %}
